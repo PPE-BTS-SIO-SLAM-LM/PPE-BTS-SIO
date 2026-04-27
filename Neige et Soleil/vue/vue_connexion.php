@@ -6,9 +6,13 @@
         <?php unset($_SESSION['msg-login-resa']);?>
         <?php endif;?>
         <?php if(isset($_SESSION['msg-erreur-connexion'])):?>
-                    <h3 style="color:red; margin-top: 0.5rem; margin-bottom: 0.5rem; "><?= $_SESSION['msg-erreur-connexion'];?></h3>
-                <?php unset($_SESSION['msg-erreur-connexion']);?>
-                <?php endif;?>
+                <h3 style="color:red; margin-top: 0.5rem; margin-bottom: 0.5rem; "><?= $_SESSION['msg-erreur-connexion'];?></h3>
+        <?php unset($_SESSION['msg-erreur-connexion']);?>
+        <?php endif;?>
+        <?php if(isset($_SESSION['msg-confirm-changement-mdp'])):?>
+                <h3 style="color:green; margin-top: 0.5rem; margin-bottom: 0.5rem; "><?= $_SESSION['msg-confirm-changement-mdp'];?></h3>
+        <?php unset($_SESSION['msg-confirm-changement-mdp']);?>
+        <?php endif;?>
         <form id="formConnexion" method="post" action="index.php?page=8">
             <table>
                 <tr>

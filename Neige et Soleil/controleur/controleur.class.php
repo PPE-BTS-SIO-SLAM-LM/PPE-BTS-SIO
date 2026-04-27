@@ -266,4 +266,9 @@ class Controleur {
     public function updateMdp($email,$newMdp){
         $this->unModele->updateMdp($email,$newMdp);
     }
+
+    //mdp expiré chaque 3 mois
+    public function changerMdp($email,$nvMdp){
+        $this->unModele->changerMdp($email,$nvMdp);
+    }
 }

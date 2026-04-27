@@ -827,6 +827,13 @@ class Modele{
         }
     }
 
+    public function changerMdp($email,$nvMdp){
+        $requete = "UPDATE utilisateur SET mdp = :nvMdp, date_mdp = curdate() WHERE email = :email";
+        $data = array(":email"=>$email, ":nvMdp"=>$nvMdp);
+        $exe = $this->unPdo->prepare($requete);
+        $exe->execute($data);
+    }
+
 
 }
 ?>

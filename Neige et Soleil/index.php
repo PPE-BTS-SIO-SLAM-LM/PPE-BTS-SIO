@@ -40,7 +40,7 @@
             <li><a href="index.php?page=5">Réservations</a></li>
             <li><a href="index.php?page=9">Déconnexion</a></li>
         <?php endif;?>
-        <?php if(!isset($_SESSION['email'])):?>
+        <?php if(!isset($_SESSION['email']) || $_SESSION['role'] == 'changement mdp'):?>
             <li><a href="index.php">Accueil</a> </li>
             <li><a href="index.php?page=8">Connexion</a></li>
         <?php endif;?>
@@ -113,6 +113,7 @@
         case 27 : require_once("controleur/gestion_update_appartement.php");break;
         case 28 : require_once("controleur/gestion_maison.php");break;
         case 29 : require_once("controleur/gestion_appartement.php");break;
+        case 30 : require_once("controleur/gestion_changement_mdp.php");break;
         default : header("Location: controleur/erreur.php");break;
     }
 ?>

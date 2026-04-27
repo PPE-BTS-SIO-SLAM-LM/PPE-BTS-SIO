@@ -353,7 +353,8 @@ select *, curdate() from reservation where date_fin < curdate();
 delete from reservation where date_fin < curdate();
 
 end //
-end;
+
+delimiter ;
 
 
 
@@ -380,6 +381,26 @@ delimiter ;
 
 
 
+
+
+/**************************************** Modif 07/04 **************************************/
+/*gestion changement mdp expiré chaque 3 mois*/
+alter table utilisateur add column date_mdp date after mdp;
+
+/*gestion ajout champ nb resa des clients*/
+alter table client add column nb_resa int;
+
+drop trigger if exists tr_nbResa;
+delimiter //
+create trigger tr_nbResa
+after insert on reservation
+for each row
+begin
+update client set nb_resa = nb_resa + 1 where id_c = new.id_c;
+end //
+delimiter ;
+
+update client c set c.nb_resa = (select count(*) from reservation r where r.id_c = c.id_c);
 
 
 
