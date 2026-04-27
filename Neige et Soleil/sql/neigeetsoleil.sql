@@ -65,7 +65,7 @@ create table habitation(
     capacite_hab int(2) not null,
     primary key (ref_hab),
     foreign key (id_p) references proprietaire(id_p)
-);ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
+)ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
 
 create table appartement(
     ref_hab int(5) not null auto_increment,
@@ -128,8 +128,8 @@ create table contrat(
     ref_hab int(5) not null,
     primary key (ref_c),
     foreign key (id_p) references proprietaire(id_p),
-    foreign key (ref_hab) references habitation(ref_hab),
-)ENGINE = InnoDB CHARSET = utf8mb4;;
+    foreign key (ref_hab) references habitation(ref_hab)
+)ENGINE = InnoDB CHARSET = utf8mb4;
 
 create table image(
     ref_image int(5) not null auto_increment,
