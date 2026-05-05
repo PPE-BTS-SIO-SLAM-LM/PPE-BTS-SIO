@@ -33,6 +33,7 @@ create table client(
     cp varchar(10),
     ville varchar(50),
     RIB varchar(50),
+    nb_resa int default 0,
     primary key(id_c),
     constraint fk_client_user foreign key(id_c) references utilisateur(id_user) on delete cascade
 )ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
