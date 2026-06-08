@@ -388,8 +388,6 @@ delimiter ;
 /*gestion changement mdp expiré chaque 3 mois*/
 alter table utilisateur add column date_mdp date after mdp;
 
-/*gestion ajout champ nb resa des clients*/
-alter table client add column nb_resa int;
 
 drop trigger if exists tr_nbResa;
 delimiter //
