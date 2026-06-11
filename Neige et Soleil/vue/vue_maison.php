@@ -4,7 +4,7 @@
     <div class="superConteneurGestion">
         <!-- ================= FORMULAIRE (GAUCHE) ================= -->
         <div class="conteneurInsert">
-            <h3>Ajouter/Modifier maison</h3>
+            <h4>Ajouter/Modifier maison</h4>
 
                 <form method="post" enctype="multipart/form-data" class="conteneurFormInsert">
                     <table class="tabFormInsert">
@@ -135,9 +135,9 @@
 
         <!-- ================= TABLE (DROITE) ================= -->
         <div class="conteneurListe">
-
+            <h4>Liste maisons</h4>
             <div class="conteneurFiltrer">
-                <h3>Filtrer par :</h3>
+                <p class="filtrerPar">Filtrer par :</p>
                 <!-- Filtre -->
                 <form method="post" class="listes">
                     <input class="form-control" type="text" name="filtre">
@@ -206,7 +206,7 @@
                     </tbody>
                 </table>
             </div>
-            <p>
+            <p class="nbTotal">
                 <?= (isset($lesMaisons)) ? "Nombre de maison : " . count($lesMaisons) : "" ?>
             </p>
         </div>

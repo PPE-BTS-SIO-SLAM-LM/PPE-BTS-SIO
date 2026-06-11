@@ -4,7 +4,7 @@
     <div class="superConteneurGestion">
         <!-- ================= FORMULAIRE (GAUCHE) ================= -->
         <div class="conteneurInsert">
-            <h3>Ajouter/Modifier réservation</h3>
+            <h4>Ajouter/Modifier réservation</h4>
 
                 <form method="post" class="conteneurFormInsert">
                     <table class="tabFormInsert">
@@ -130,9 +130,9 @@
 
         <!-- ================= TABLE (DROITE) ================= -->
         <div class="conteneurListe">
-
+            <h4>Liste réservations</h4>
             <div class="conteneurFiltrer">
-                <h3>Filtrer par :</h3>
+                <p class="filtrerPar">Filtrer par </p>
 
                 <!-- Filtre -->
                 <form method="post" class="listes">
@@ -193,7 +193,7 @@
                     </tbody>
                 </table>
             </div>
-            <p>
+            <p class="nbTotal">
                 <?= (isset($lesReservations)) ? "Nombre de réservations : " . count($lesReservations) : "" ?>
             </p>
         </div>

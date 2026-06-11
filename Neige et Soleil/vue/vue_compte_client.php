@@ -11,31 +11,31 @@
     <table>
         <tr>
             <th id="top">Nom</th>
-            <td id="top"><?= ($utilisateur == null)?"":$utilisateur['nom'];?></td>
+            <td id="top" class="infoPersoCompte"><?= ($utilisateur == null)?"":$utilisateur['nom'];?></td>
         </tr>
         <tr>
             <th>Prénom</th>
-            <td><?= ($utilisateur == null)?"":$utilisateur['prenom'];?></td>
+            <td class="infoPersoCompte"><?= ($utilisateur == null)?"":$utilisateur['prenom'];?></td>
         </tr>
         <tr>
             <th>Adresse</th>
-            <td><?= ($leClient == null)?"":$leClient['adresse'];?></td>
+            <td class="infoPersoCompte"><?= ($leClient == null)?"":$leClient['adresse'];?></td>
         </tr>
         <tr>
             <th>CP</th>
-            <td><?= ($leClient == null)?"":$leClient['cp'];?></td>
+            <td class="infoPersoCompte"><?= ($leClient == null)?"":$leClient['cp'];?></td>
         </tr>
         <tr>
             <th>Ville</th>
-            <td><?= ($leClient == null)?"":$leClient['ville'];?></td>
+            <td class="infoPersoCompte"><?= ($leClient == null)?"":$leClient['ville'];?></td>
         </tr>
         <tr>
-            <th>Email</th>
-            <td><?= ($utilisateur == null)?"":$utilisateur['email'];?></td>
+            <th>E-mail</th>
+            <td class="infoPersoCompte"><?= ($utilisateur == null)?"":$utilisateur['email'];?></td>
         </tr>
         <tr>
             <th id="bottom">Tél</th>
-            <td id="bottom"><?= ($utilisateur == null)?"":$utilisateur['tel'];?></td>
+            <td id="bottom" class="infoPersoCompte"><?= ($utilisateur == null)?"":$utilisateur['tel'];?></td>
         </tr>
     </table>
     <a href="index.php?page=20" class="btModifier">

@@ -5,7 +5,7 @@
 
         <!-- ================= FORMULAIRE (GAUCHE) ================= -->
         <div class="conteneurInsert">
-            <h3>Ajouter/Modifier appartement</h3>
+            <h4>Ajouter/Modifier appartement</h4>
                 
                 <form method="post" enctype="multipart/form-data" class="conteneurFormInsert">
                     <table class="tabFormInsert">
@@ -143,9 +143,9 @@
 
         <!-- ================= TABLE (DROITE) ================= -->
         <div class="conteneurListe">
-
+            <h4>Liste appartements</h4>
             <div class="conteneurFiltrer">
-                <h3>Filtrer par :</h3>
+                <p class="filtrerPar">Filtrer par :</p>
 
                 <!-- Filtre -->
                 <form method="post" class="listes">
@@ -217,7 +217,7 @@
                         </tbody>
                     </table>
                 </div>
-                <p>
+                <p class="nbTotal">
                     <?= (isset($lesAppartements)) ? "Nombre d'appartement : " . count($lesAppartements) : "" ?>
                 </p>
         </div>

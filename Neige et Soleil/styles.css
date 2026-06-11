@@ -225,12 +225,12 @@ form button{
     font-size:15px;
 }
 .cardVilleHab{
-    color: #555555;
+    color: #303030;
     font-family:Arial, Helvetica, sans-serif;
     font-size:13px;
 }
 .cardTarifHab{
-    color: #555555;
+    color: #303030;
     font-family:Arial, Helvetica, sans-serif;
     font-size:13px;
     margin-top: 1px;
@@ -990,13 +990,12 @@ form button{
     font-size: 14px;
 }
 .tabCardHab td:first-child {
-    color: #888;
     font-weight: 500;
 }
 
 .tabCardHab td:last-child {
-    font-weight: 600;
-    color: #222;
+    color: #303030;
+    font-size: 14px;
 }
 .cardHab > div {
     display: flex;
@@ -1045,6 +1044,10 @@ form button{
 
 
 /* vue compte client */
+.infoPersoCompte{
+    font-size: 14px;
+    color: #303030;
+}
 .infos_activites {
     display: flex;
     flex-wrap: wrap;
@@ -1078,13 +1081,12 @@ form button{
     font-size: 14px;
 }
 .tabCardResa td:first-child {
-    color: #888;
     font-weight: 500;
 }
 
 .tabCardResa td:last-child {
-    font-weight: 600;
-    color: #222;
+    color: #303030;
+    font-size: 14px;
 }
 .cardResa > div {
     display: flex;
@@ -1134,20 +1136,22 @@ form button{
     display: flex;
     flex-direction: row;
     gap: 15rem;
+    align-items: flex-start;
 }
 
-
-.conteneurFormInsert{
-    background-color: #f2f2f2;
-    border-radius: 20px;
-    margin-top: 0.5rem;
-}
 .conteneurInsert{
     display: flex;
     flex: 0 0 auto;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-top: 4rem;
+    margin-bottom: 2rem;
+}
+.conteneurFormInsert{
+    background-color: #f2f2f2;
+    border-radius: 20px;
+    margin-top: 0.5rem;
 }
 .tabFormInsert{
     all: unset;
@@ -1159,6 +1163,7 @@ form button{
 .tabFormInsert td{
     border: none;
     padding: 0.3rem;
+    font-weight: 400;
 }
 .conteneurBtFormInsert{
     display: flex;
@@ -1203,11 +1208,18 @@ form button{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-top: 4rem;
+    margin-bottom: 2rem;
 }
 .conteneurFiltrer{
     display: flex;
     flex-direction: row;
     gap: 1rem;
+    justify-content: center;
+    align-items: center;
+}
+.filtrerPar{
+    color: #303030;
 }
 .btFiltrer{
     all: unset;
@@ -1246,7 +1258,10 @@ form button{
 .tabListe tbody tr:nth-child(odd){
     background-color: #f2f2f2;
 }
-
+.nbTotal{
+    margin-top: 1rem;
+    color: #303030;
+}
 
 
 

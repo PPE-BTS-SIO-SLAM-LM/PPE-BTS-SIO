@@ -4,7 +4,7 @@
     <div class="superConteneurGestion">
         <!-- ================= FORMULAIRE (GAUCHE) ================= -->
         <div class="conteneurInsert">
-            <h3>Ajouter / Modifier propriétaire</h3>
+            <h4>Ajouter / Modifier propriétaire</h4>
 
                 <form method="post" class="conteneurFormInsert">
                     <table class="tabFormInsert">
@@ -21,7 +21,7 @@
                         </tr>
 
                         <tr>
-                            <td>Email</td>
+                            <td>E-mail</td>
                             <td><input class="form-control" type="email" name="email"
                                 value="<?= ($leProprietaire == null)?"":$leProprietaire['email'];?>" required></td>
                         </tr>
@@ -51,7 +51,7 @@
                         </tr>
 
                         <tr>
-                            <td>Téléphone</td>
+                            <td>Tél</td>
                             <td><input class="form-control" type="text" name="tel"
                                 value="<?= ($leProprietaire == null)?"":$leProprietaire['tel'];?>" required></td>
                         </tr>
@@ -90,10 +90,9 @@
 
         <!-- ================= TABLE (DROITE) ================= -->
         <div class="conteneurListe">
-
+            <h4>Liste propriétaires</h4>
             <div class="conteneurFiltrer">
-                <h3>Filtrer par :</h3>
-
+                <p class="filtrerPar">Filtrer par </p>
                 <!-- Filtre -->
                 <form method="post" action="index.php?page=3#tabListeProprio" class="listes">
                     <input class="form-control" type="text" name="filtre">
@@ -159,7 +158,7 @@
                     </tbody>
                 </table>
             </div>
-            <p>
+            <p class="nbTotal">
                 <?= (isset($lesProprietaires)) ? "Nombre de propriétaires : " . count($lesProprietaires) : "" ?>
             </p>
         </div>
