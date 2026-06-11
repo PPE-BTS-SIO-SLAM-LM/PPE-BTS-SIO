@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
 /*Général*/
 *{
@@ -77,8 +78,12 @@ h1{
     font-family: "Montserrat", sans-serif;
     margin: 1rem 0 1rem 0;
 }
+h2{
+    margin-top: 1rem;
+}
 h3{
     margin-top: 1rem;
+    margin-bottom: 0.5rem;
 }
 table{
     border: solid 1px black;
@@ -212,6 +217,23 @@ form button{
 
 #Connexion{
     margin-top: 0.5rem;
+}
+/*Style txt card*/
+.cardTypeHab{
+    font-weight: 550;
+    font-family:"Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size:15px;
+}
+.cardVilleHab{
+    color: #555555;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size:13px;
+}
+.cardTarifHab{
+    color: #555555;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size:13px;
+    margin-top: 1px;
 }
 
 
@@ -423,6 +445,9 @@ form button{
 .r{
     display: flex;
     flex-direction: column;
+    font-weight: 550;
+    font-family:"Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size:15px;
 }
 .btnRechercheAnnonces{
     all: unset;
@@ -510,6 +535,22 @@ form button{
     align-items: center;
     gap: 1.5rem;
     background-color: #f2f2f2;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+#titreCapacite{
+    font-weight: 500;
+}
+#nbCapacite{
+    font-size: 14px;
+    color: #303030;
+}
+.titreNbJours{
+    font-weight: 500;
+}
+.titrePrix{
+    font-size: 14px;
+    color: #303030;
 }
 .formResaInputs{
     display: flex;
@@ -519,6 +560,10 @@ form button{
 .f{
     display: flex;
     flex-direction: column;
+}
+.f label{
+    font-weight: 500;
+    font-size: 15px;
 }
 .capacitePrixHab{
     display: flex;
@@ -560,6 +605,11 @@ form button{
     border-radius: 20px;
     width: 25%;
     margin-bottom: 2rem;
+}
+.descConfirmResa{
+    margin-top: 2px;
+    font-size: 13px;
+    color: #303030;
 }
 .dataConfirmationResa{
     padding: 0.5rem 0 0.5rem 0;

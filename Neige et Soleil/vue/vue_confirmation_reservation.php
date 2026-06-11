@@ -4,21 +4,21 @@
     <div class="cardTeteConfirmationResa">
         <div class="conteneurImgConfirmationResa"><img class="imgConfirmationResa" src="images/test1.jpg" alt=""></div>
         <div class="conteneurTitreDataHabitation">
-            <h4><?= htmlspecialchars($data['titreHabitation']) ?></h4>
-            <p><?= htmlspecialchars($data['typeHabitation']) ?></p>
-            <p><?= htmlspecialchars($data['adresseHabitation']) ?></p>
-            <p><?= htmlspecialchars($data['codePostalHabitation']) ?></p>
-            <p><?= htmlspecialchars($data['villeHabitation']) ?></p>
+            <h3><?= htmlspecialchars($data['titreHabitation']) ?></h3>
+            <p class="descConfirmResa"><?= htmlspecialchars($data['typeHabitation']) ?></p>
+            <p class="descConfirmResa"><?= htmlspecialchars($data['adresseHabitation']) ?></p>
+            <p class="descConfirmResa"><?= htmlspecialchars($data['codePostalHabitation']) ?></p>
+            <p class="descConfirmResa"><?= htmlspecialchars($data['villeHabitation']) ?></p>
         </div>
     </div>
     <div class="dataAnnulationResa">
         <h4>Annulation gratuite</h4>
-        <p>Annulez maximum 24h avant afin de recevoir un remboursement intégral</p>
+        <p class="descConfirmResa">Annulez maximum 24h avant afin de recevoir un remboursement intégral</p>
     </div>
     <div class="dataConfirmationResa">
         <div>
             <h4>Nom</h4>
-            <p><?= $_SESSION['nom'] ?></p>
+            <p class="descConfirmResa"><?= $_SESSION['nom'] ?></p>
         </div>
         <div>
             <a href="index.php?page=6" class="modifierInfos">modifier</a>
@@ -27,7 +27,7 @@
     <div class="dataConfirmationResa">
         <div>
             <h4>Prénom</h4>
-            <p><?= $_SESSION['prenom'] ?></p>
+            <p class="descConfirmResa"><?= $_SESSION['prenom'] ?></p>
         </div>
         <div>
             <a href="index.php?page=6" class="modifierInfos">modifier</a>
@@ -36,7 +36,7 @@
     <div class="dataConfirmationResa">
         <div>
             <h4>Email</h4>
-            <p><?= $_SESSION['email'] ?></p>
+            <p class="descConfirmResa"><?= $_SESSION['email'] ?></p>
         </div>
         <div>
             <a href="index.php?page=6" class="modifierInfos">modifier</a>
@@ -45,7 +45,7 @@
     <div class="dataConfirmationResa">
         <div>
             <h4>Tel</h4>
-            <p><?= $_SESSION['tel'] ?></p>
+            <p class="descConfirmResa"><?= $_SESSION['tel'] ?></p>
         </div>
         <div>
             <a href="index.php?page=6" class="modifierInfos">modifier</a>
@@ -54,7 +54,7 @@
     <div class="dataConfirmationResa">
         <div>
             <h4>Dates</h4>
-            <p>Début : <?= htmlspecialchars($data['arrivee'])?> / Fin : <?= htmlspecialchars($data['depart'])?></p>
+            <p class="descConfirmResa"> Début : <?= htmlspecialchars($data['arrivee'])?> / Fin : <?= htmlspecialchars($data['depart'])?></p>
         </div>
         <div>
             <a href="index.php?page=10&ref_hab=<?= htmlspecialchars($data['refHab']) ?>" class="modifierInfos">modifier</a>
@@ -63,7 +63,7 @@
     <div class="dataConfirmationResa">
         <div>
             <h4>Voyageurs</h4>
-            <p><?= htmlspecialchars($data['voyageurs']) ?></p>
+            <p class="descConfirmResa"><?= htmlspecialchars($data['voyageurs']) ?></p>
         </div>
         <div>
             <a href="index.php?page=10&ref_hab=<?= htmlspecialchars($data['refHab']) ?>" class="modifierInfos">modifier</a>
@@ -72,13 +72,13 @@
     <div class="dataConfirmationResa">
         <div>
             <h4>Détail du prix</h4>
-            <p><?= htmlspecialchars($data['nbJours']) ?> nuits x <?= htmlspecialchars($data['prixParNuit']) ?>€</p>
+            <p class="descConfirmResa"><?= htmlspecialchars($data['nbJours']) ?> nuits x <?= htmlspecialchars($data['prixParNuit']) ?>€</p>
         </div>
     </div>
     <div class="dataConfirmationResa">
         <div>
             <h4>Total</h4>
-            <p><?= htmlspecialchars($data['prixTotalHidden']) ?>€</p>
+            <p class="descConfirmResa"><?= htmlspecialchars($data['prixTotalHidden']) ?>€</p>
         </div>
     </div>
     <form action="" method="post" id="formBtConfirmationResa">

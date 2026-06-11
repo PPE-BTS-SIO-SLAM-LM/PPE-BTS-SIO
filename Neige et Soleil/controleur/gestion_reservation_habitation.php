@@ -22,9 +22,13 @@
             nbJours = diffTime / (1000 * 60 * 60 * 24);
             prix = nbJours * prixParNuit; 
             
-            document.getElementById('prixTotal').textContent = `${nbJours} nuits — ${prix} €`;
+            document.getElementById('prixTotal').innerHTML = `<span class="titreNbJours">Total : </span> 
+                                                              <span class="titrePrix">${prix} €</span>`;
+
         } else {
-            document.getElementById('prixTotal').textContent = '1 nuit —'+prixParNuit+'€';
+            document.getElementById('prixTotal').innerHTML = `<span>1 nuit - </span>  
+                                                              <span>${prixParNuit} €</span>`;
+
         } 
 
         document.getElementById('prixTotalHidden').value = prix;

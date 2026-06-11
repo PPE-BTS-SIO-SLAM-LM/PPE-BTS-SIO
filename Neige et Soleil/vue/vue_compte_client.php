@@ -14,7 +14,7 @@
             <td id="top"><?= ($utilisateur == null)?"":$utilisateur['nom'];?></td>
         </tr>
         <tr>
-            <th>Prenom</th>
+            <th>Prénom</th>
             <td><?= ($utilisateur == null)?"":$utilisateur['prenom'];?></td>
         </tr>
         <tr>
@@ -22,7 +22,7 @@
             <td><?= ($leClient == null)?"":$leClient['adresse'];?></td>
         </tr>
         <tr>
-            <th>Code postal</th>
+            <th>CP</th>
             <td><?= ($leClient == null)?"":$leClient['cp'];?></td>
         </tr>
         <tr>
@@ -34,7 +34,7 @@
             <td><?= ($utilisateur == null)?"":$utilisateur['email'];?></td>
         </tr>
         <tr>
-            <th id="bottom">Téléphone</th>
+            <th id="bottom">Tél</th>
             <td id="bottom"><?= ($utilisateur == null)?"":$utilisateur['tel'];?></td>
         </tr>
     </table>

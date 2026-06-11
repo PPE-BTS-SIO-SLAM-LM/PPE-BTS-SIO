@@ -17,11 +17,11 @@
                 </select>
             </div>
             <div class="r">
-                <label for="prixMax">Prix max :</label>
+                <label for="prixMax">Prix max </label>
                 <input type="number" name="prixMax" id="prixMax">
             </div>
             <div class="r">
-                <label for="prixMin">Prix min :</label>
+                <label for="prixMin">Prix min </label>
                 <input type="number" name="prixMin" id="prixMin">
             </div>
             <script>
@@ -54,9 +54,9 @@
                         <?php else : ?>
                             <img class="imgHabitation" src="" alt="">
                         <?php endif; ?>
-                        <p><?= $uneHabitation['type_hab'];?></p>
-                        <p><?= $uneHabitation['ville_hab'] ?></p>
-                        <p><?= $uneHabitation['tarif_hab_moy'] ?>€ la nuit</p>
+                        <p class="cardTypeHab"><?= $uneHabitation['type_hab'];?></p>
+                        <p class="cardVilleHab"><?= $uneHabitation['ville_hab'] ?></p>
+                        <p class="cardTarifHab"><?= $uneHabitation['tarif_hab_moy'] ?>€ - nuit</p>
                     </div>
                 </a>
             <?php endforeach; ?>

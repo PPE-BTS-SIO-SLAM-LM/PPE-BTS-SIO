@@ -7,14 +7,14 @@
     <?php endforeach; ?>
 </div>
 <div class="typeVilleDescHabitation">
-    <h3><?= $habitation['type_hab'] ?>, <?= $habitation['ville_hab'] ?> - <?= $habitation['cp_hab'] ?></h3>
-    <p><?= $habitation['description_hab'] ?></p>
+    <h3><?= $habitation['type_hab'] ?> - <?= $habitation['ville_hab'] ?>,<?= $habitation['cp_hab'] ?></h3>
+    <p class="descHab"><?= $habitation['description_hab'] ?></p>
 </div>
 
 <div class="resa">
     <form id="formResa" action="index.php?page=10&ref_hab=<?= $habitation['ref_hab'];?>#formResa" method="post">
         <div class="capacitePrixHab">
-            <p>Capacité : <?= $habitation['capacite_hab'] ?> voyageurs</p>
+            <p><span id="titreCapacite">Capacité : </span><span id="nbCapacite"><?= $habitation['capacite_hab'] ?> voyageurs</span></p>
             <p id="prixTotal"></p>
         </div>
         <div class="formResaInputs">
