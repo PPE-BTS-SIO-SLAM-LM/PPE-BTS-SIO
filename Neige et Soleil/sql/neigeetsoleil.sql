@@ -31,6 +31,7 @@ create table client(
     cp varchar(10),
     ville varchar(50),
     RIB varchar(50),
+    nb_resa int default 0,
     primary key(id_c),
     constraint fk_client_user foreign key(id_c) references utilisateur(id_user) on delete cascade
 )ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
@@ -392,8 +393,6 @@ delimiter ;
 /*gestion changement mdp expiré chaque 3 mois*/
 alter table utilisateur add column date_mdp date after mdp;
 
-/*gestion ajout champ nb resa des clients*/
-alter table client add column nb_resa int;
 
 drop trigger if exists tr_nbResa;
 delimiter //
