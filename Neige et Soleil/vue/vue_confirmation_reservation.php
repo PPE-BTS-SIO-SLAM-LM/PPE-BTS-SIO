@@ -2,7 +2,8 @@
 <h1 id="titreConfirmationResa">Confirmez votre réservation !</h1>
 <div class="conteneurPrincipalConfirmationResa">
     <div class="cardTeteConfirmationResa">
-        <div class="conteneurImgConfirmationResa"><img class="imgConfirmationResa" src="images/test1.jpg" alt=""></div>
+        <?php $photoPcpl = $unControleur->selectPhotoPrincipalHabitation($data['refHab']); ?>
+        <div class="conteneurImgConfirmationResa"><img class="imgConfirmationResa" src="images/habitations/<?= $photoPcpl['url_photo'] ?>" alt=""></div>
         <div class="conteneurTitreDataHabitation">
             <h3><?= htmlspecialchars($data['titreHabitation']) ?></h3>
             <p class="descConfirmResa"><?= htmlspecialchars($data['typeHabitation']) ?></p>
@@ -98,4 +99,5 @@
     </form>
 </div>
 </section>
+
 

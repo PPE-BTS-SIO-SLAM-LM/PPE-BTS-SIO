@@ -83,9 +83,7 @@ if (isset($_POST['ajouter'])){
 
 
         if (!empty($erreurs)) { 
-                $_SESSION['erreurs'] = $erreurs; 
-                header("Location:index.php?page=13"); 
-                exit; 
+                $_SESSION['erreurs'] = $erreurs;
         }else{
                 //ajouter les insert dans photos et habitations
                 $refHab = $unControleur->insertMaison([

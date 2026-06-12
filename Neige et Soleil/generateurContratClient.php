@@ -21,24 +21,29 @@ class PDF extends FPDF{
 
         $this->SetFont("Arial","B",12);
         $this->Cell(0,15,iconv('UTF-8', 'ISO-8859-1',"Identité du client (ou de son représentant légal)"),0,1,"C");
+        $this->SetFont("Arial","",10);
         $this->MultiCell(0,10,iconv('UTF-8', 'ISO-8859-1',"Nom : ".($leClient['nom']).
-                                "\nPrenom : ".($leClient['prenom']).
+                                "\nPrénom : ".($leClient['prenom']).
                                 "\nAdresse : ".($leClient['adresse']).
                                 "\nCode postal : ".($leClient['cp']).
                                 "\nVille : ".($leClient['ville']).
-                                "\nTéléphone : ".($leClient['tel']).
+                                "\nE-mail : ".($leClient['email']).
+                                "\nTél : ".($leClient['tel']).
                                 "\nRIB : ".($leClient['RIB'])),1,"L");
-
+        $this->SetFont("Arial","B",12);
         $this->Cell(0,15,iconv('UTF-8', 'ISO-8859-1',"Réservation"),0,1,"C");
 
         if (!empty($reservationClient)) {
+                $this->SetFont("Arial","",10);
                 $this->MultiCell(0,10,iconv('UTF-8', 'ISO-8859-1',"Référence : ".($reservationClient['ref_res']).
+                                "\nIdentifant habitation : ".($reservationClient['ref_hab']).
                                 "\nDate réservation : ".($reservationClient['date_res']).
                                 "\nNombre personnes : ".($reservationClient['nb_perso']).
                                 "\nDate début : ".($reservationClient['date_debut']).
                                 "\nDate fin : ".($reservationClient['date_fin']).
-                                "\nIdentifant habitation : ".($reservationClient['ref_hab'])),1,"L");
+                                "\nMontant total : ".($reservationClient['prix_a_payer'])).chr(128),1,"L");
             }else {
+                $this->SetFont("Arial","",10);
                 $this->Cell(0, 10,iconv('UTF-8','ISO-8859-1', "Aucune information trouvée pour la réservation : " . $refRes), 1, 1);
             } 
           
@@ -47,6 +52,7 @@ class PDF extends FPDF{
     function footer(){
         $this->SetFont("Arial","B",12);
         $this->Cell(0,15,iconv('UTF-8', 'ISO-8859-1',"Signature des deux parties"),0,1,"C");
+        $this->SetFont("Arial","",10);
         $this->Cell(0,30,iconv('UTF-8', 'ISO-8859-1',"Le Client"),1,1,"L");
         $this->Cell(0,30,iconv('UTF-8', 'ISO-8859-1',"Neige & Soleil"),1,1,"L");
     }
@@ -57,5 +63,4 @@ $pdf = new PDF();
 $pdf->AddPage();
 $pdf->body();
 $pdf->Output();
-
 ?>

@@ -430,7 +430,7 @@ class Modele{
 
     public function insertMaison($tab) {
         $requete = "INSERT INTO maison (type_hab, adr_hab, cp_hab, ville_hab, tarif_hab_bas, tarif_hab_moy, tarif_hab_hau, surface, id_p, description_hab, titre_hab, capacite_hab, carac_m) 
-                VALUES ('maison', :adr_hab, :cp_hab, :ville_hab, :tarif_hab_bas, :tarif_hab_moy, :tarif_hab_hau, :surface, :id_p, :description_hab, :titre_hab, :capacite_hab, :carac_m);";
+                VALUES ('Maison', :adr_hab, :cp_hab, :ville_hab, :tarif_hab_bas, :tarif_hab_moy, :tarif_hab_hau, :surface, :id_p, :description_hab, :titre_hab, :capacite_hab, :carac_m);";
         
         $exe = $this->unPdo->prepare($requete);
 
@@ -535,7 +535,7 @@ class Modele{
                         (type_hab, adr_hab, cp_hab, ville_hab, tarif_hab_bas, tarif_hab_moy, 
                         tarif_hab_hau, surface, id_p, description_hab, titre_hab, 
                         capacite_hab,etage_ap,type_ap)
-                    VALUES ('appartement',:adr_hab,:cp_hab,:ville_hab,:tarif_hab_bas,
+                    VALUES ('Appartement',:adr_hab,:cp_hab,:ville_hab,:tarif_hab_bas,
                             :tarif_hab_moy,:tarif_hab_hau,:surface,:id_p,:description_hab,
                             :titre_hab,:capacite_hab,:etage_ap,:type_ap);";
 
