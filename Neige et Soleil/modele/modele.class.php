@@ -419,8 +419,7 @@ class Modele{
         return $exe->fetchAll();
     }
 
-    //Maisons
-
+    /****************   MAISONS   ****************/
     public function selectAllMaison(){
         $requete = "SELECT * FROM maison;";
         $exe = $this->unPdo->prepare($requete);

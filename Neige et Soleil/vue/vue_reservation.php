@@ -9,6 +9,57 @@
                 <form method="post" class="conteneurFormInsert">
                     <table class="tabFormInsert">
                         <tr>
+                            <td>Client</td>
+                            <td>
+                                <select class="form-select" name="id_c" id="id_c" required>
+                                    <?php
+                                    if  ($reservation!=null){
+                                     foreach ($lesClients as $unClient)
+                                        if ($unClient['id_c'] == $reservation['id_c']){
+                                            echo '<option value="'.$unClient['id_c'].'">'.$unClient['nom'].' - '.$unClient['prenom'].' </option>';
+                                            break;
+                                        }
+                                    }else {
+                                    echo '<option value=""> Sélectionner un client  </option>';
+                                    }
+
+                                     foreach ($lesClients as $unClient){
+                                        if ($unClient['id_c'] != $reservation['id_c']){
+                                        ?>
+                                        <option value="<?= $unClient['id_c']?>">
+                                            <?= $unClient['id_c']." - ".$unClient['nom']." - ".$unClient['prenom'];?>
+                                        </option>
+                                    <?php } } ?>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Habitation</td>
+                            <td>
+                                <select class="form-select" name="ref_hab" id="ref_hab" required>
+                                    <?php
+                                    if  ($reservation!=null){
+                                     foreach ($lesHabitations as $uneHabitation)
+                                        if ($uneHabitation['ref_hab'] == $reservation['ref_hab']){
+                                            echo '<option value="'.$uneHabitation['ref_hab'].'">'.$uneHabitation['ref_hab'].' - '.$uneHabitation['type_hab'].' - '.$uneHabitation['ville_hab'].' </option>';
+                                            break;
+                                        }
+                                    }else {
+                                    echo '<option value=""> Sélectionner habitation  </option>';
+                                    }
+
+                                     foreach ($lesHabitations as $uneHabitation){
+                                        if ($uneHabitation['ref_hab'] != $reservation['ref_hab']){
+                                        ?>
+                                        <option value="<?= $uneHabitation['ref_hab']?>"
+                                                capa-max="<?= $uneHabitation['capacite_hab']?>">
+                                            <?= $uneHabitation['ref_hab']." - ".$uneHabitation['type_hab']." - ".$uneHabitation['ville_hab'];?>
+                                        </option>
+                                    <?php } } ?>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
                             <td>Nombre personnes</td>
                             <td>
                                 <input class="form-control" type="number" name="nb_perso" id="nb_perso"
@@ -45,59 +96,6 @@
                                     <option value="Validee">Validée</option>
                                     <option value="En attente">En attente</option>
                                     <option value="Annulee">Annulée</option>
-                                </select>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>Client</td>
-                            <td>
-                                <select class="form-select" name="id_c" id="id_c" required>
-                                    <?php
-                                    if  ($reservation!=null){
-                                     foreach ($lesClients as $unClient)
-                                        if ($unClient['id_c'] == $reservation['id_c']){
-                                            echo '<option value="'.$unClient['id_c'].'">'.$unClient['nom'].' - '.$unClient['prenom'].' </option>';
-                                            break;
-                                        }
-                                    }else {
-                                    echo '<option value=""> Sélectionner un client  </option>';
-                                    }
-
-                                     foreach ($lesClients as $unClient){
-                                        if ($unClient['id_c'] != $reservation['id_c']){
-                                        ?>
-                                        <option value="<?= $unClient['id_c']?>">
-                                            <?= $unClient['id_c']." - ".$unClient['nom']." - ".$unClient['prenom'];?>
-                                        </option>
-                                    <?php } } ?>
-                                </select>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>Habitation</td>
-                            <td>
-                                <select class="form-select" name="ref_hab" id="ref_hab" required>
-                                    <?php
-                                    if  ($reservation!=null){
-                                     foreach ($lesHabitations as $uneHabitation)
-                                        if ($uneHabitation['ref_hab'] == $reservation['ref_hab']){
-                                            echo '<option value="'.$uneHabitation['ref_hab'].'">'.$uneHabitation['ref_hab'].' - '.$uneHabitation['type_hab'].' - '.$uneHabitation['ville_hab'].' </option>';
-                                            break;
-                                        }
-                                    }else {
-                                    echo '<option value=""> Sélectionner habitation  </option>';
-                                    }
-
-                                     foreach ($lesHabitations as $uneHabitation){
-                                        if ($uneHabitation['ref_hab'] != $reservation['ref_hab']){
-                                        ?>
-                                        <option value="<?= $uneHabitation['ref_hab']?>"
-                                                capa-max="<?= $uneHabitation['capacite_hab']?>">
-                                            <?= $uneHabitation['ref_hab']." - ".$uneHabitation['type_hab']." - ".$uneHabitation['ville_hab'];?>
-                                        </option>
-                                    <?php } } ?>
                                 </select>
                             </td>
                         </tr>

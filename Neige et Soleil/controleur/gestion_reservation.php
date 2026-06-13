@@ -43,6 +43,22 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+    const arrivee = document.getElementById('arrivee');
+    const depart = document.getElementById('depart');
+    const ajd = new Date().toISOString().split('T')[0];
+    const demain = new Date(ajd);
+    demain.setDate(demain.getDate() + 1);
+    arrivee.min = ajd;
+    arrivee.value = ajd;
+    depart.min = demain.toISOString().split('T')[0];
+    depart.value = demain.toISOString().split('T')[0];
+	
+	arrivee.addEventListener('change', () => {
+    depart.min = arrivee.value;  
+    })
+});
 </script>
 
 
