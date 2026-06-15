@@ -9,6 +9,7 @@
         if(!$unUtilisateur){
             $_SESSION['msg-erreur-connexion'] = "Identifiants incorrects";
         }else{
+            //Gestion mdp expiré + 3 mois
             $dateMdp = $unUtilisateur['date_mdp'];
             $dateAjd = date('Y-m-d');
             $dateMdp = new DateTime($dateMdp);

@@ -1,14 +1,17 @@
 <?php
-require_once("modele/modele.class.php"); 
+require_once("modele/modele.class.php");
+
 class Controleur {
     private $unModele ;
 
     public function __construct (){
         $this->unModele= new Modele();
-
     }
 
-    //Utilisateurs
+    
+    
+    
+    /******************************************************     UTILISATEURS     ******************************************************/
     public function selectAllUtilisateurs(){
         return $this->unModele->selectAllUtilisateurs();
     }
@@ -24,7 +27,9 @@ class Controleur {
     }
 
 
-    //Clients
+    
+    
+    /******************************************************     CLIENTS     ******************************************************/
     public function insertClient($tab){
         $this->unModele->insertClient($tab);
     }
@@ -46,7 +51,9 @@ class Controleur {
     }   
 
 
-    //Proprietaires
+    
+    
+    /******************************************************     PROPRIOS    ******************************************************/
     public function insertProprietaire($tab){
         $this->unModele->insertProprietaire($tab);
     }
@@ -72,7 +79,9 @@ class Controleur {
     }
 
 
-    //Habitations
+    
+    
+    /******************************************************     HABITATIONS     ******************************************************/
     public function insertHabitation($tab){
         //controle des donnees du clients
         //appel du modele pour realiser l'insertion
@@ -81,7 +90,6 @@ class Controleur {
     public function selectAllHabitation(){
         return $this->unModele->selectAllHabitation();
     }
-    
     public function selectAllHabitationType($type){
         return $this->unModele->selectAllHabitationType($type);
     }
@@ -123,65 +131,61 @@ class Controleur {
     }
 
 
-    //Maisons
+    
+    
+    /******************************************************     MAISONS     ******************************************************/
     public function selectAllMaison(){
         return $this->unModele->selectAllMaison();
     }
-
     public function selectWhereMaison($ref_hab){
         return $this->unModele->selectWhereMaison($ref_hab);
     }
     public function insertMaison($tab){
         return $this->unModele->insertMaison($tab);
     }
-
     public function deleteMaison($ref_hab){
         return $this->unModele->deleteMaison($ref_hab);
     }
-
     public function updateMaisonAnnonce($tab){
         $this->unModele->updateMaisonAnnonce($tab);
     }
-
     public function updateMaison($tab){
         $this->unModele->updateMaison($tab);
     }
-
     public function selectLikeMaison($filtre){
         $this->unModele->selectLikeMaison($filtre);
     }
     
 
-    //Appartements
+    
+    
+    /******************************************************     APPARTEMENTS     ******************************************************/
     public function selectAllAppartement(){
         return $this->unModele->selectAllAppartement();
     }
-
     public function selectWhereAppartement($ref_hab){
         return $this->unModele->selectWhereAppartement($ref_hab);
     }
     public function insertAppartement($tab){
         return $this->unModele->insertAppartement($tab);
     }
-
     public function deleteAppartement($ref_hab){
         return $this->unModele->deleteAppartement($ref_hab);
     }
-
     public function updateAppartementAnnonce($tab){
         $this->unModele->updateAppartementAnnonce($tab);
     }
-
     public function updateAppartement($tab){
         $this->unModele->updateAppartement($tab);
     }
-
     public function selectLikeAppartement($filtre){
         $this->unModele->selectLikeAppartement($filtre);
     }
 
     
-    //Reservations
+    
+    
+    /******************************************************     RESERVATIONS     ******************************************************/
     public function insertReservation($tab){
         //controle des donnees du clients
 
@@ -222,7 +226,7 @@ class Controleur {
 
 
 
-    //admins
+    /******************************************************     ADMINS     ******************************************************/
     public function selectWhereAdmin($email,$mdp){
         return $this->unModele->selectWhereAdmin($email,$mdp);
     }
@@ -230,7 +234,7 @@ class Controleur {
 
 
 
-    //Photos
+    /******************************************************     PHOTOS     ******************************************************/
     public function selectAllPhotoPrincipal(){
         return $this->unModele->selectAllPhotoPrincipal();
     }
@@ -250,13 +254,15 @@ class Controleur {
 
 
 
-    //contrats
+    /******************************************************     CONTRATS     ******************************************************/
     public function selectCountContratByProprio(){
         return $this->unModele->selectCountContratByProprio();
     }
 
 
-    //mdp oublié
+    
+    
+    /******************************************************     REINITIALISATION MDP     ******************************************************/
     public function verifCode($email,$mdp){
         return $this->unModele->verifCode($email,$mdp);
     }

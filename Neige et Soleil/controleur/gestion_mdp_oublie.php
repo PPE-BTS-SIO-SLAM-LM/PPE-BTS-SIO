@@ -49,7 +49,7 @@ $erreurs = [];
                                                 )
                                             );
             try {
-                // Paramètres Serveur (Exemple Gmail)
+                // Paramètres Serveur (gmail)
                 $mail->isSMTP();
                 $mail->Host       = 'smtp.gmail.com';
                 $mail->SMTPAuth   = true;
@@ -69,7 +69,7 @@ $erreurs = [];
 
                 $mail->send();
 
-                // 4. Stocker l'email en session pour la page suivante
+                // Stockage email en session pour la page suivante
                 $_SESSION['email_reset'] = $email;
                 header("Location: index.php?page=18");
                 exit;

@@ -19,7 +19,8 @@ class Modele{
 
 
 
-    //Utilisateurs
+    
+    /******************************************************     UTILISATEURS     ******************************************************/
     public function selectAllUtilisateurs(){
         $requete = "SELECT * FROM utilisateur;";
         $exe = $this->unPdo->prepare($requete);
@@ -58,11 +59,7 @@ class Modele{
 
 
 
-
-
-
-
-    /*** Clients ***/
+    /******************************************************     CLIENTS    ******************************************************/
     public function insertClient($tab) {
         try {
             $this->unPdo->beginTransaction();
@@ -101,7 +98,6 @@ class Modele{
         }
     }
 
-
     public function updateClient($tab) {
         try {
             $this->unPdo->beginTransaction();
@@ -137,7 +133,7 @@ class Modele{
             die;
         }
     }
-    
+
     public function selectAllClients() {
         $requete = "SELECT * FROM utilisateur U
                     INNER JOIN client C ON U.id_user = C.id_c
@@ -176,9 +172,9 @@ class Modele{
 
 
 
-    //Propriétaires
 
-     public function insertProprietaire($tab) {
+    /******************************************************     PROPRIOS     ******************************************************/ 
+    public function insertProprietaire($tab) {
         try {
             $this->unPdo->beginTransaction();
 
@@ -289,14 +285,14 @@ class Modele{
 
 
 
-    //Habitations
+    
+    /******************************************************     HABITATIONS     ******************************************************/
     public function selectAllHabitation(){
         $requete = "SELECT * FROM habitation;";
         $exe = $this->unPdo->prepare($requete);
         $exe->execute();
         return $exe->fetchAll();
     }
-
     public function selectWhereHabitation($ref_hab){
         $requete = "SELECT * FROM habitation where ref_hab = :ref_hab;";
         $data = array(":ref_hab"=>$ref_hab);
@@ -419,7 +415,10 @@ class Modele{
         return $exe->fetchAll();
     }
 
-    /****************   MAISONS   ****************/
+
+
+
+    /******************************************************     MAISONS     ******************************************************/
     public function selectAllMaison(){
         $requete = "SELECT * FROM maison;";
         $exe = $this->unPdo->prepare($requete);
@@ -462,11 +461,21 @@ class Modele{
             surface = :surface, id_p = :id_p, description_hab = :description_hab, titre_hab = :titre_hab, 
             capacite_hab = :capacite_hab, carac_m = :carac_m where ref_hab = :ref_hab;";
 
-        $data = array(":adr_hab"=>$tab['adr_hab'],":cp_hab"=>$tab['cp_hab'],
-        ":ville_hab"=>$tab['ville_hab'],":tarif_hab_bas"=>$tab['tarif_hab_bas'],":tarif_hab_moy"=>$tab['tarif_hab_moy'],
-        ":tarif_hab_hau"=>$tab['tarif_hab_hau'],":surface"=>$tab['surface'],":id_p"=>$tab['id_p'],
-        ":description_hab"=>$tab['description_hab'],":titre_hab"=>$tab['titre_hab'],":capacite_hab"=>$tab['capacite_hab'],
-        "carac_m"=>$tab['carac_m'],":ref_hab"=>$tab['ref_hab']);
+        $data = array(
+                        ":adr_hab"=>$tab['adr_hab'],
+                        ":cp_hab"=>$tab['cp_hab'],
+                        ":ville_hab"=>$tab['ville_hab'],
+                        ":tarif_hab_bas"=>$tab['tarif_hab_bas'],
+                        ":tarif_hab_moy"=>$tab['tarif_hab_moy'],
+                        ":tarif_hab_hau"=>$tab['tarif_hab_hau'],
+                        ":surface"=>$tab['surface'],
+                        ":id_p"=>$tab['id_p'],
+                        ":description_hab"=>$tab['description_hab'],
+                        ":titre_hab"=>$tab['titre_hab'],
+                        ":capacite_hab"=>$tab['capacite_hab'],
+                        "carac_m"=>$tab['carac_m'],
+                        ":ref_hab"=>$tab['ref_hab']
+                    );
 
         $exe = $this->unPdo->prepare($requete);
         $exe->execute($data);
@@ -479,7 +488,6 @@ class Modele{
         $exe->execute($data);
         return $exe->fetch();
     }
-
     public function deleteMaison($ref_hab){
         $requete = "UPDATE contrat SET status_c = 'Annule' where ref_hab = :ref_hab";
         $data = array(":ref_hab"=>$ref_hab);
@@ -496,7 +504,6 @@ class Modele{
         $data = array(":ref_hab"=>$ref_hab);
         $exe->execute($data); 
     }
-
     public function updateMaisonAnnonce($tab){
         $requete = "UPDATE maison SET tarif_hab_bas = :tarif_hab_bas, tarif_hab_moy = :tarif_hab_moy, tarif_hab_hau = :tarif_hab_hau, description_hab = :description_hab, titre_hab = :titre_hab, capacite_hab = :capacite_hab, carac_m = :carac_m WHERE ref_hab = :ref_hab;";
         $data = array(":tarif_hab_bas"=>$tab['tarif_hab_bas'],
@@ -511,7 +518,6 @@ class Modele{
         $exe = $this->unPdo->prepare($requete);
         $exe->execute($data);
     }
-
     public function selectLikeMaison($filtre){
         $requete = "select * from maison where type_hab like :filtre or adr_hab like :filtre or cp_hab like :filtre or ville_hab like :filtre or tarif_hab_bas like :filtre or tarif_hab_moy like :filtre or tarif_hab_hau like :filtre or surface like :filtre or ;";
         $data = array(":filtre"=>"%".$filtre."%");
@@ -521,7 +527,9 @@ class Modele{
     }
 
 
-    //Appartements
+
+
+    /******************************************************     APPARTEMENTS     ******************************************************/
     public function selectAllAppartement(){
         $requete = "SELECT * FROM appartement;";
         $exe = $this->unPdo->prepare($requete);
@@ -570,10 +578,22 @@ class Modele{
             id_p = :id_p, description_hab = :description_hab, titre_hab = :titre_hab, capacite_hab = :capacite_hab, etage_ap = :etage_ap,
             type_ap = :etage_ap where ref_hab = :ref_hab;";
 
-        $data = array(":adr_hab"=>$tab['adr_hab'],":cp_hab"=>$tab['cp_hab'],":ville_hab"=>$tab['ville_hab'],
-        ":tarif_hab_bas"=>$tab['tarif_hab_bas'],":tarif_hab_moy"=>$tab['tarif_hab_moy'],":tarif_hab_hau"=>$tab['tarif_hab_hau'],
-        ":surface"=>$tab['surface'],":id_p"=>$tab['id_p'],":description_hab"=>$tab['description_hab'],":titre_hab"=>$tab['titre_hab'],
-        ":capacite_hab"=>$tab['capacite_hab'],":etage_ap"=>$tab['etage_ap'],":type_ap"=>$tab['type_ap'],":ref_hab"=>$tab['ref_hab']);
+        $data = array(
+                        ":adr_hab"=>$tab['adr_hab'],
+                        ":cp_hab"=>$tab['cp_hab'],
+                        ":ville_hab"=>$tab['ville_hab'],
+                        ":tarif_hab_bas"=>$tab['tarif_hab_bas'],
+                        ":tarif_hab_moy"=>$tab['tarif_hab_moy'],
+                        ":tarif_hab_hau"=>$tab['tarif_hab_hau'],
+                        ":surface"=>$tab['surface'],":id_p"=>$tab['id_p'],
+                        ":description_hab"=>$tab['description_hab'],
+                        ":titre_hab"=>$tab['titre_hab'],
+                        ":capacite_hab"=>$tab['capacite_hab'],
+                        ":etage_ap"=>$tab['etage_ap'],
+                        ":type_ap"=>$tab['type_ap'],
+                        ":ref_hab"=>$tab['ref_hab']
+                    );
+
         $exe = $this->unPdo->prepare($requete);
         $exe->execute($data);
     }
@@ -585,7 +605,6 @@ class Modele{
         $exe->execute($data);
         return $exe->fetch();
     }
-
     public function deleteAppartement($ref_hab){
         $requete = "UPDATE contrat SET status_c = 'Annule' where ref_hab = :ref_hab";
         $data = array(":ref_hab"=>$ref_hab);
@@ -602,7 +621,6 @@ class Modele{
         $data = array(":ref_hab"=>$ref_hab);
         $exe->execute($data); 
     }
-
     public function updateAppartementAnnonce($tab){
         $requete = "UPDATE appartement SET tarif_hab_bas = :tarif_hab_bas, tarif_hab_moy = :tarif_hab_moy, tarif_hab_hau = :tarif_hab_hau, description_hab = :description_hab, titre_hab = :titre_hab, capacite_hab = :capacite_hab, etage_ap = :etage_ap, type_ap = :type_ap WHERE ref_hab = :ref_hab;";
         $data = array(":tarif_hab_bas"=>$tab['tarif_hab_bas'],
@@ -626,7 +644,10 @@ class Modele{
         return $exe->fetchAll();
     }
 
-    //Reservations
+
+
+
+    /******************************************************     RESERVATIONS     ******************************************************/
     public function selectAllReservation(){
         $requete = "SELECT * FROM reservation;";
         $exe = $this->unPdo->prepare($requete);
@@ -676,7 +697,16 @@ class Modele{
     }
     public function updateReservation($tab){
         $requete = "UPDATE reservation SET date_res = curdate(), nb_perso = :nb_perso, date_debut = :date_debut, date_fin = :date_fin, etat_res = :etat_res, id_c = :id_c, ref_hab = :ref_hab where ref_res = :ref_res;";
-        $data = array(":nb_perso"=>$tab['nb_perso'],":date_debut"=>$tab['date_debut'],":date_fin"=>$tab['date_fin'],":etat_res"=>$tab['etat_res'], ":ref_res"=>$tab['ref_res'], ":id_c"=>$tab['id_c'], ":ref_hab"=>$tab['ref_hab'],":ref_res"=>$tab['ref_res']);
+        $data = array(
+                        ":nb_perso"=>$tab['nb_perso'],
+                        ":date_debut"=>$tab['date_debut'],
+                        ":date_fin"=>$tab['date_fin'],
+                        ":etat_res"=>$tab['etat_res'], 
+                        ":ref_res"=>$tab['ref_res'], 
+                        ":id_c"=>$tab['id_c'], 
+                        ":ref_hab"=>$tab['ref_hab'],
+                        ":ref_res"=>$tab['ref_res']
+                    );
         $exe = $this->unPdo->prepare($requete);
         $exe->execute($data);
     }
@@ -685,7 +715,7 @@ class Modele{
         $exe = $this->unPdo->prepare($requete);
         $data = array(":ref_res"=>$ref_res);
         $exe->execute($data);    
-    }
+    } 
     public function annulerReservation($ref_res){
         $requete = "update reservation set etat_res = 'Annulee' where ref_res = :ref_res;";
         $data = array(":ref_res"=>$ref_res);
@@ -715,7 +745,7 @@ class Modele{
 
 
 
-    //admins
+    /******************************************************     ADMINS     ******************************************************/
     public function selectWhereAdmin($email,$mdp){
         $requete = "SELECT * FROM admin where email_a = :email and mdp_a = :mdp;";
         $data = array(":email"=>$email,":mdp"=>$mdp);
@@ -727,14 +757,12 @@ class Modele{
 
 
 
-
-    //Photos
+    /******************************************************     PHOTOQ     ******************************************************/
     public function selectAllPhotoPrincipal(){
         $requete = "SELECT * FROM photos where is_principal = true;";
         $exe = $this->unPdo->prepare($requete);
         return $exe->fetchAll();
     }
-
     public function selectAllPhotosWhere($refHab){
         $requete = "SELECT url_photo FROM photos where ref_hab = :ref_hab
                     AND is_principal = false;";
@@ -771,9 +799,7 @@ class Modele{
 
 
 
-
-
-    /* Contrat */
+    /******************************************************     CONTRATS     ******************************************************/
     public function selectCountContratByProprio(){
         $sql = "SELECT id_p,count(*) AS nb_contrats FROM contrat GROUP BY id_p;";
         $req = $this->unPdo->prepare($sql);
@@ -784,8 +810,7 @@ class Modele{
 
 
 
-
-/* Reinitialisation mdp */
+    /******************************************************     REINITIALISATION MDP     ******************************************************/
     public function verifCode($email,$code){
         $sql = "SELECT * FROM reset_mdp 
                     WHERE email = :email AND code = :code 
@@ -832,7 +857,6 @@ class Modele{
         $exe = $this->unPdo->prepare($requete);
         $exe->execute($data);
     }
-
-
 }
+
 ?>

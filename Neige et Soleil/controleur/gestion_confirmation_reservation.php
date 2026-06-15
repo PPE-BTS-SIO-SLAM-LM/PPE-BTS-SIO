@@ -21,3 +21,4 @@
 
     require_once("vue/vue_confirmation_reservation.php");
 ?>
+
