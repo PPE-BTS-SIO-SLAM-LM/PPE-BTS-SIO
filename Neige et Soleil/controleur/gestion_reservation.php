@@ -80,6 +80,7 @@ if(isset($_SESSION['email']) && $_SESSION['role']== 'admin'){
 
 		switch($action){
 			case "sup" : $unControleur->annulerReservation($ref_res);
+										$_SESSION['msg-reussite'] = "Annulation réussie de la réservation ✅";
 										header('Location:index.php?page=5');
 										exit;
 										break;
@@ -115,6 +116,7 @@ if(isset($_POST['valider'])){
 		$_SESSION['msg-erreurs'] = $erreurs;
     }else{
 		$unControleur->insertReservationAdmin($_POST);
+		$_SESSION['msg-reussite'] = "Ajout réussie de la reservation ✅";
 		header("Location:index.php?page=5");
 		exit;
 	}
@@ -130,6 +132,7 @@ if(isset($_POST['modifier'])){
 		$_SESSION['msg-erreurs'] = $erreurs;
     }else{
 		$unControleur->updateReservation($_POST);
+		$_SESSION['msg-reussite'] = "Mis a jour réussie de la réservation ✅";
 		header("Location:index.php?page=5");
 		exit;
 	}

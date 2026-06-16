@@ -15,6 +15,7 @@ if(isset($_SESSION['role']) && $_SESSION['role'] == 'admin'){
 
 		switch($action){
 			case "sup" : $unControleur->deleteAppartement($ref_hab);
+                                        $_SESSION['msg-reussite'] = "Suppression réussie de l'appartement ✅";
 										header("Location:index.php?page=29");
 										exit;
 										break;
@@ -70,14 +71,14 @@ if(isset($_POST['valider'])){
     }
 
     $regles = [
-				"adr_hab" => [$regexAdresse, "Veuillez rentrer une adresse valide"],
-                "cp_hab" => [$regexCp,      "Veuillez rentrer un code postal valide"],
-            	"ville_hab" => [$regexVille,   "Veuillez rentrer un nom de ville valide"],
-                "tarif_hab_bas" => [$regexTarifs, "Veuillez rentrer un tarif bas valide"],
-                "tarif_hab_moy" => [$regexTarifs, "Veuillez rentrer un tarif moyenvalide"],
-                "tarif_hab_hau" => [$regexTarifs, "Veuillez rentrer un tarif haut valide"],
-                "surface"  => [$regexSurface, "Veuillez rentrer une surface valide"],
-                "capacite_hab"  => [$regexCapacite, "Veuillez rentrer une capacité valide"]
+				"adr_hab" => [$regexAdresse, "Veuillez saisir une adresse valide"],
+                "cp_hab" => [$regexCp,      "Veuillez saisir un code postal valide"],
+            	"ville_hab" => [$regexVille,   "Veuillez sasir un nom de ville valide"],
+                "tarif_hab_bas" => [$regexTarifs, "Veuillez saisir un tarif bas valide"],
+                "tarif_hab_moy" => [$regexTarifs, "Veuillez saisir un tarif moyenvalide"],
+                "tarif_hab_hau" => [$regexTarifs, "Veuillez saisir un tarif haut valide"],
+                "surface"  => [$regexSurface, "Veuillez saisir une surface valide"],
+                "capacite_hab"  => [$regexCapacite, "Veuillez saisir une capacité valide"]
 			];
     foreach($regles as $champ => [$regex, $msg]){
 		if(!preg_match($regex, trim($_POST[$champ]))){
@@ -105,7 +106,7 @@ if(isset($_POST['valider'])){
     }
 
 	if (!empty($erreurs)) { 
-                $_SESSION['erreurs'] = $erreurs; 
+                $_SESSION['msg-erreurs'] = $erreurs; 
                 header("Location:index.php?page=29"); 
                 exit; 
         }else{
@@ -139,7 +140,7 @@ if(isset($_POST['valider'])){
                 "is_principal" => $isPrincipal
 			]);
         }
-		
+		$_SESSION['msg-reussite'] = "Ajout réussi de l'appartement ✅";
 		header("Location: index.php?page=29");
         exit;
 	}
@@ -155,14 +156,14 @@ if(isset($_POST['modifier'])){
     }
 
     $regles = [
-				"adr_hab" => [$regexAdresse, "Veuillez rentrer une adresse valide"],
-                "cp_hab" => [$regexCp,      "Veuillez rentrer un code postal valide"],
-            	"ville_hab" => [$regexVille,   "Veuillez rentrer un nom de ville valide"],
-                "tarif_hab_bas" => [$regexTarifs, "Veuillez rentrer un tarif bas valide"],
-                "tarif_hab_moy" => [$regexTarifs, "Veuillez rentrer un tarif moyenvalide"],
-                "tarif_hab_hau" => [$regexTarifs, "Veuillez rentrer un tarif haut valide"],
-                "surface"  => [$regexSurface, "Veuillez rentrer une surface valide"],
-                "capacite_hab"  => [$regexCapacite, "Veuillez rentrer une capacité valide"],
+				"adr_hab" => [$regexAdresse, "Veuillez saisir une adresse valide"],
+                "cp_hab" => [$regexCp,      "Veuillez saisir un code postal valide"],
+            	"ville_hab" => [$regexVille,   "Veuillez saisir un nom de ville valide"],
+                "tarif_hab_bas" => [$regexTarifs, "Veuillez saisir un tarif bas valide"],
+                "tarif_hab_moy" => [$regexTarifs, "Veuillez saisir un tarif moyenvalide"],
+                "tarif_hab_hau" => [$regexTarifs, "Veuillez saisir un tarif haut valide"],
+                "surface"  => [$regexSurface, "Veuillez saisir une surface valide"],
+                "capacite_hab"  => [$regexCapacite, "Veuillez saisir une capacité valide"],
 			];
     foreach($regles as $champ => [$regex, $msg]){
 		if(!preg_match($regex, trim($_POST[$champ]))){
@@ -191,7 +192,7 @@ if(isset($_POST['modifier'])){
     }
 
 	if (!empty($erreurs)) {
-		$_SESSION['erreurs'] = $erreurs; 
+		$_SESSION['msg-erreurs'] = $erreurs; 
         header("Location:index.php?page=29"); 
         exit; 
     }else{
@@ -230,7 +231,7 @@ if(isset($_POST['modifier'])){
                 ]);
             }
         }
-
+        $_SESSION['msg-reussite'] = "Mis à jour réussie de l'appartement ✅";
 		header("Location:index.php?page=29");
 		exit;
 	}

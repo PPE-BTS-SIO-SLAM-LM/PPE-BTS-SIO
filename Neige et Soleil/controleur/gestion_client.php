@@ -13,6 +13,7 @@ if(isset($_SESSION['role']) && $_SESSION['role'] == 'admin'){
 
 		switch($action){
 			case "sup"  : $unControleur->deleteClient($id_c);
+						  $_SESSION['msg-reussite'] = "Suppression réussie du client ✅";	
 						  header("Location: index.php?page=2");
 						  exit;
 						  break;
@@ -58,15 +59,15 @@ if(isset($_POST['valider'])){
         }
     }
 	$regles = [
-				"nom" => [$regexNom, "Veuillez rentrer un nom valide"],
-                "prenom" => [$regexPrenom, "Veuillez rentrer un prénom valide"],
-                "email" => [$regexEmail, "Veuillez rentrer un email valide"],
-                "mdp" => [$regexMdp, "Veuillez rentrer un mot de passe valide"],
-                "adresse" => [$regexAdresse, "Veuillez rentrer une adresse valide"],
-                "cp" => [$regexCp, "Veuillez rentrer un code postal valide"],
-                "ville" => [$regexVille, "Veuillez rentrer un nom de ville valide"],
-                "tel" => [$regexTel, "Veuillez rentrer un numéro de téléphone valide"],
-                "rib" => [$regexRib, "Veuillez rentrer un RIB valide"]
+				"nom" => [$regexNom, "Veuillez saisir un nom valide"],
+                "prenom" => [$regexPrenom, "Veuillez saisir un prénom valide"],
+                "email" => [$regexEmail, "Veuillez saisir un email valide"],
+                "mdp" => [$regexMdp, "Veuillez saisir un mot de passe valide"],
+                "adresse" => [$regexAdresse, "Veuillez saisir une adresse valide"],
+                "cp" => [$regexCp, "Veuillez saisir un code postal valide"],
+                "ville" => [$regexVille, "Veuillez saisir un nom de ville valide"],
+                "tel" => [$regexTel, "Veuillez saisir un numéro de téléphone valide"],
+                "rib" => [$regexRib, "Veuillez saisir un RIB valide"]
 			];
     foreach($regles as $champ => [$regex, $msg]){
 		if(!preg_match($regex, trim($_POST[$champ]))){
@@ -78,6 +79,7 @@ if(isset($_POST['valider'])){
                 $_SESSION['msg-erreurs'] = $erreurs;
         }else{
 			$unControleur->insertClient($_POST);
+			$_SESSION['msg-reussite'] = "Ajout réussi du client ✅";
 	}
 }
 	
@@ -90,15 +92,15 @@ if(isset($_POST['modifier'])){
         }
     }
 	$regles = [
-				"nom" => [$regexNom, "Veuillez rentrer un nom valide"],
-                "prenom" => [$regexPrenom, "Veuillez rentrer un prénom valide"],
-                "email" => [$regexEmail, "Veuillez rentrer un email valide"],
-                "mdp" => [$regexMdp, "Veuillez rentrer un mot de passe valide"],
-                "adresse" => [$regexAdresse, "Veuillez rentrer une adresse valide"],
-                "cp" => [$regexCp, "Veuillez rentrer un code postal valide"],
-                "ville" => [$regexVille, "Veuillez rentrer un nom de ville valide"],
-                "tel" => [$regexTel, "Veuillez rentrer un numéro de téléphone valide"],
-                "rib" => [$regexRib, "Veuillez rentrer un RIB valide"]
+				"nom" => [$regexNom, "Veuillez saisir un nom valide"],
+                "prenom" => [$regexPrenom, "Veuillez saisir un prénom valide"],
+                "email" => [$regexEmail, "Veuillez saisir un email valide"],
+                "mdp" => [$regexMdp, "Veuillez saisir un mot de passe valide"],
+                "adresse" => [$regexAdresse, "Veuillez saisir une adresse valide"],
+                "cp" => [$regexCp, "Veuillez saisir un code postal valide"],
+                "ville" => [$regexVille, "Veuillez saisir un nom de ville valide"],
+                "tel" => [$regexTel, "Veuillez saisir un numéro de téléphone valide"],
+                "rib" => [$regexRib, "Veuillez saisir un RIB valide"]
 			];
     foreach($regles as $champ => [$regex, $msg]){
 		if(!preg_match($regex, trim($_POST[$champ]))){
@@ -109,7 +111,8 @@ if(isset($_POST['modifier'])){
 	if(!empty($erreurs)){
             $_SESSION['msg-erreurs'] = $erreurs;
     }else{
-		$unControleur->updateClient($_POST); 
+		$unControleur->updateClient($_POST);
+		$_SESSION['msg-reussite'] = "Modification réussie du client ✅";
 		header("Location: index.php?page=2");
 		exit;
 	}

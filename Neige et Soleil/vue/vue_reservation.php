@@ -101,13 +101,20 @@
                         </tr>
                     </table>
 
-                    <!-- Erreurs -->
-                    <?php if(!empty($_SESSION['erreurs'])): ?>
-                        <?php foreach($_SESSION['erreurs'] as $uneErreur): ?>
-                            <div class="alert alert-danger p-2"><?= $uneErreur ?></div>
-                        <?php endforeach; ?>
-                        <?php unset($_SESSION['erreurs']); ?>
-                    <?php endif; ?>
+                    <div class="conteneurMsgErreurReussite">
+                        <!-- Erreurs -->
+                        <?php if(!empty($_SESSION['msg-erreurs'])): ?>
+                            <?php foreach($_SESSION['msg-erreurs'] as $uneErreur): ?>
+                                <span style="color:red"><?= $uneErreur ?></span>
+                            <?php endforeach; ?>
+                            <?php unset($_SESSION['msg-erreurs']); ?>
+                        <?php endif; ?>
+                        <!-- Reussite -->
+                        <?php if(!empty($_SESSION['msg-reussite'])): ?>
+                            <span style="color:green"><?= $_SESSION['msg-reussite']; ?></span>
+                            <?php unset($_SESSION['msg-reussite']); ?>
+                        <?php endif; ?>
+                    </div>
 
                     <div class="conteneurBtFormInsert">
                         <button class="btnAnnuler btAnnulerFormInsert" type="submit" name="annuler">

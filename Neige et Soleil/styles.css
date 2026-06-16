@@ -1165,6 +1165,14 @@ form button{
     padding: 0.3rem;
     font-weight: 400;
 }
+.conteneurMsgErreurReussite{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
 .conteneurBtFormInsert{
     display: flex;
     justify-content: center;

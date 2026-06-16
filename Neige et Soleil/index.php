@@ -40,6 +40,11 @@
             <li><a href="index.php?page=5">Réservations</a></li>
             <li><a href="index.php?page=9">Déconnexion</a></li>
         <?php endif;?>
+        <?php if(!isset($_SESSION['email'])) :?>
+            <li><a href="index.php">Accueil</a> </li>
+            <li><a href="index.php?page=8">Connexion</a></li>
+        <?php endif;?>
+
     </ul>
 </header>
 

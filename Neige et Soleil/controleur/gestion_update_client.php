@@ -43,15 +43,15 @@
         }
 
         $regles = [
-                        "nom" => [$regexNom,     "Veuillez rentrer un nom valide"],
-                        "prenom" => [$regexPrenom,  "Veuillez rentrer un prénom valide"],
-                        "email" => [$regexEmail,   "Veuillez rentrer un email valide"],
-                        "mdp" => [$regexMdp,     "Veuillez rentrer un mot de passe valide"],
-                        "adresse" => [$regexAdresse, "Veuillez rentrer une adresse valide"],
-                        "cp" => [$regexCp,      "Veuillez rentrer un code postal valide"],
-                        "ville" => [$regexVille,   "Veuillez rentrer un nom de ville valide"],
-                        "tel" => [$regexTel,     "Veuillez rentrer un numéro de téléphone valide"],
-                        "rib" => [$regexRib,     "Veuillez rentrer un RIB valide"]
+                        "nom" => [$regexNom,     "Veuillez saisir un nom valide"],
+                        "prenom" => [$regexPrenom,  "Veuillez saisir un prénom valide"],
+                        "email" => [$regexEmail,   "Veuillez saisir un email valide"],
+                        "mdp" => [$regexMdp,     "Veuillez saisir un mot de passe valide"],
+                        "adresse" => [$regexAdresse, "Veuillez saisir une adresse valide"],
+                        "cp" => [$regexCp,      "Veuillez saisir un code postal valide"],
+                        "ville" => [$regexVille,   "Veuillez saisir un nom de ville valide"],
+                        "tel" => [$regexTel,     "Veuillez saisir un numéro de téléphone valide"],
+                        "rib" => [$regexRib,     "Veuillez saisir un RIB valide"]
         ];
 
         foreach($regles as $champ => [$regex, $msg]){
