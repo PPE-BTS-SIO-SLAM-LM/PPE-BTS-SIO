@@ -494,11 +494,6 @@ class Modele{
         $exe = $this->unPdo->prepare($requete);
         $exe->execute($data);
 
-        $requete = "DELETE FROM contrat where ref_hab = :ref_hab;";
-        $exe = $this->unPdo->prepare($requete);
-        $data = array(":ref_hab"=>$ref_hab);
-        $exe->execute($data); 
-
         $requete = "DELETE FROM maison where ref_hab = :ref_hab;";
         $exe = $this->unPdo->prepare($requete);
         $data = array(":ref_hab"=>$ref_hab);
@@ -609,11 +604,6 @@ class Modele{
         $requete = "UPDATE contrat SET status_c = 'Annule' where ref_hab = :ref_hab";
         $data = array(":ref_hab"=>$ref_hab);
         $exe = $this->unPdo->prepare($requete);
-        $exe->execute($data);
-
-        $requete = "DELETE FROM contrat where ref_hab = :ref_hab;";
-        $exe = $this->unPdo->prepare($requete);
-        $data = array(":ref_hab"=>$ref_hab);
         $exe->execute($data); 
 
         $requete = "DELETE FROM appartement where ref_hab = :ref_hab;";
@@ -721,13 +711,7 @@ class Modele{
         $data = array(":ref_res"=>$ref_res);
         $exe = $this->unPdo->prepare($requete);
         $exe->execute($data);
-
-        $requete = "delete from reservation where ref_res = :ref_res;";
-        $data = array(":ref_res"=>$ref_res);
-        $exe = $this->unPdo->prepare($requete);
-        $exe->execute($data);
     }
-
     public function selectLikeReservation($filtre){
         $requete = "select * from reservation where date_res like :filtre or nb_perso like :filtre or etat_res like :filtre or date_debut like :filtre or date_fin like :filtre;";
         $data = array(":filtre"=>"%".$filtre."%");

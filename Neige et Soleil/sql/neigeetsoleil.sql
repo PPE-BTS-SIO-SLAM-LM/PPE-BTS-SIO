@@ -31,7 +31,6 @@ create table client(
     cp varchar(10),
     ville varchar(50),
     RIB varchar(50),
-    nb_resa int default 0,
     primary key(id_c),
     constraint fk_client_user foreign key(id_c) references utilisateur(id_user) on delete cascade
 )ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
@@ -43,7 +42,6 @@ create table proprietaire(
     cp varchar(10),
     ville varchar(50),
     RIB varchar(50),
-    nb_contrat int default 0,
     primary key(id_p),
     constraint fk_proprietaire_user foreign key(id_p) references utilisateur(id_user) on delete cascade
 )ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
@@ -268,29 +266,6 @@ delete from contrat where contrat.ref_hab = old.ref_hab;
 end //
 delimiter ;
 
-drop trigger if exists updateNbContratInsert;
-delimiter //
-create trigger updateNbContratInsert
-after insert on contrat
-for each row
-begin 
-update proprietaire set nb_contrat = nb_contrat + 1 
-where id_p = new.id_p;
-end //
-delimiter ;
-
-drop trigger if exists updateNbContratDelete;
-delimiter //
-create trigger updateNbContratDelete
-after delete on contrat
-for each row
-begin 
-update proprietaire set nb_contrat = nb_contrat - 1 
-where id_p = old.id_p;
-end //
-delimiter ;
-
-
 
 
 drop trigger if exists tbi_utilisateur;
@@ -301,7 +276,6 @@ for each row
 begin
 set new.nom = upper(new.nom);
 set new.prenom = capitalisation(new.prenom);
-set new.date_mdp = curdate();
 end //
 delimiter ;
 
@@ -313,33 +287,9 @@ for each row
 begin
 set new.nom = upper(new.nom);
 set new.prenom = capitalisation(new.prenom);
-if new.mdp <> old.mdp then 
-    set new.date_mdp = curdate();
-end if;
 end //
 delimiter ;
 
-/*
-drop trigger if exists formeNomsPrenomsUtilisateurInsert;
-delimiter //
-create trigger formeNomsPrenomsUtilisateurInsert
-before insert on utilisateur
-for each row
-begin
-set new.nom = upper(new.nom), new.prenom = capitalisation(new.prenom);
-end//
-delimiter ;
-
-drop trigger if exists formeNomsPrenomsUtilisateurUpdate;
-delimiter //
-create trigger formeNomsPrenomsUtilisateurUpdate
-before update on utilisateur
-for each row
-begin
-set new.nom = upper(new.nom), new.prenom = capitalisation(new.prenom);
-end//
-delimiter ;
-*/
 
 
 drop trigger if exists formeInfosClientInsert;
@@ -404,61 +354,9 @@ delimiter ;
 
 
 
-/* historisation contrats */
-drop trigger if exists histoContratResilieAnnule;
-delimiter //
-create trigger histoContratResilieAnnule
-after update on contrat
-for each row 
-BEGIN
-if new.status_c = 'Resilie' or new.status_c = 'Annule' 
-then
-    insert into archivecontrat
-    values(new.ref_c,new.status_c,new.annee_signature,new.annee_fin,new.id_p,
-            new.ref_hab, curdate()
-          );
-end if;
-end // 
-delimiter ;
-
-/* historisation reservations*/
-drop trigger if exists histoReservationAnnulee;
-delimiter //
-create trigger histoReservationAnnulee
-after update on reservation
-for each row
-begin
-if new.etat_res = 'Annulee'
-then insert into archivereservation
-        values(new.ref_res, new.date_res, new.nb_perso, new.date_debut, new.date_fin,
-                new.etat_res, new.id_c, new.ref_hab, new.prix_a_payer, curdate() 
-               );
-end if;
-end //
-delimiter ;
-
-
-
 
 /****************************************** events ******************************************/
-set global event_scheduler = on;
 
-delimiter //
-
-create event archiveReservationExpiree
-on schedule every 1 day
-starts curdate()
-on completion preserve
-enable
-do
-begin
-insert into archivereservation
-select *, curdate() from reservation where date_fin < curdate();
-delete from reservation where date_fin < curdate();
-
-end //
-
-delimiter ;
 
 
 
@@ -487,22 +385,11 @@ delimiter ;
 
 
 
-/**************************************** Modif 07/04 **************************************/
-/*gestion changement mdp expiré chaque 3 mois*/
-alter table utilisateur add column date_mdp date after mdp;
+/**************************************** Modifs **************************************/
 
 
-drop trigger if exists tr_nbResa;
-delimiter //
-create trigger tr_nbResa
-after insert on reservation
-for each row
-begin
-update client set nb_resa = nb_resa + 1 where id_c = new.id_c;
-end //
-delimiter ;
 
-update client c set c.nb_resa = (select count(*) from reservation r where r.id_c = c.id_c);
+
 
 
 

@@ -1,4 +1,3 @@
-
 <section>       
         <h1>Identifiez-vous !</h1>
         <?php if(isset($_SESSION['msg-login-resa'])):?>
